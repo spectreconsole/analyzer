@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*'
+    branches:
+      - main
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+
+  ###################################################
+  # PUBLISH
+  ###################################################
+
+  build:
+    name: Publish NuGet Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            6.0.x
+            7.0.x
+            8.0.x
+
+      - name: Publish
+        shell: bash
+        run: |
+          dotnet tool restore
+          dotnet cake --target="publish" \
+            --nuget-key="${{secrets.NUGET_API_KEY}}" \
+            --github-key="${{secrets.GITHUB_TOKEN}}"

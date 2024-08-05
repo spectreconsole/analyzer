@@ -1,0 +1,45 @@
+<Project>
+  <PropertyGroup Label="Settings">
+    <Deterministic>true</Deterministic>
+    <LangVersion>12</LangVersion>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>embedded</DebugType>
+    <MinVerSkip Condition="'$(Configuration)' == 'Debug'">true</MinVerSkip>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Deterministic Build" Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package Information">
+    <Description>A Roslyn analyzer for Spectre.Console.</Description>
+    <Copyright>Patrik Svensson, Phil Scott, Nils Andresen, Cédric Luthi, Frank Ray</Copyright>
+    <Authors>Patrik Svensson, Phil Scott, Nils Andresen, Cédric Luthi, Frank Ray</Authors>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/spectreconsole/analyzer</RepositoryUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/spectreconsole/analyzer</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReleaseNotes>https://github.com/spectreconsole/spectre.console/releases</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Source Link">
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <!-- Allow folks to build with minimal dependencies (though they will need to provide their own Version data) -->
+  <ItemGroup Label="Build Tools Package References" Condition="'$(UseBuildTimeTools)' != 'false'">
+    <PackageReference Include="MinVer" PrivateAssets="All" Version="4.3.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" Version="8.0.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Roslynator.Analyzers" Version="4.12.2">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
