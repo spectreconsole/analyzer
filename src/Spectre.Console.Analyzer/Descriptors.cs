@@ -73,4 +73,15 @@ public static class Descriptors
             Usage,
             Warning,
             "Avoid prompting for input while a current renderable is running.");
+
+    /// <summary>
+    /// Gets the definitions of diagnostics Spectre1030.
+    /// </summary>
+    public static DiagnosticDescriptor S1030_AvoidInterpolationInMarkupLine { get; } =
+        Rule(
+            "Spectre1030",
+            "Avoid using string interpolation in MarkupLine.",
+            Usage,
+            Warning,
+            "Avoid using string interpolation in MarkupLine. Use MarkupLineInterpolated instead.");
 }
