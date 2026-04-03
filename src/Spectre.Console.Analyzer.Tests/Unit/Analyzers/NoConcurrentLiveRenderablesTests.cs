@@ -7,7 +7,7 @@ public class NoCurrentLiveRenderablesTests
         DiagnosticSeverity.Warning);
 
     [Fact]
-    public async void Status_call_within_live_call_warns()
+    public async Task Status_call_within_live_call_warns()
     {
         const string Source = @"
 using Spectre.Console;
@@ -28,7 +28,7 @@ class TestClass
     }
 
     [Fact]
-    public async void Status_call_within_live_call_warns_with_instance()
+    public async Task Status_call_within_live_call_warns_with_instance()
     {
         const string Source = @"
 using Spectre.Console;
@@ -51,7 +51,7 @@ class Child
     }
 
     [Fact]
-    public async void Calling_start_on_non_live_renderable_has_no_warning()
+    public async Task Calling_start_on_non_live_renderable_has_no_warning()
     {
         const string Source = @"
 using Spectre.Console;

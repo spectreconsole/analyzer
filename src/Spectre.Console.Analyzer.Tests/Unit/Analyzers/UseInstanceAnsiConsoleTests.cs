@@ -7,7 +7,7 @@ public class FavorInstanceAnsiConsoleOverStaticAnalyzerTests
         DiagnosticSeverity.Info);
 
     [Fact]
-    public async void Should_only_warn_within_methods()
+    public async Task Should_only_warn_within_methods()
     {
         const string Source = @"
 using Spectre.Console;
@@ -28,7 +28,7 @@ internal sealed class Foo
     }
 
     [Fact]
-    public async void Instance_console_has_no_warnings()
+    public async Task Instance_console_has_no_warnings()
     {
         const string Source = @"
 using Spectre.Console;
@@ -48,7 +48,7 @@ class TestClass
     }
 
     [Fact]
-    public async void Static_console_with_no_instance_variables_has_no_warnings()
+    public async Task Static_console_with_no_instance_variables_has_no_warnings()
     {
         const string Source = @"
 using Spectre.Console;
@@ -66,7 +66,7 @@ class TestClass
     }
 
     [Fact]
-    public async void Console_Write_Has_Warning()
+    public async Task Console_Write_Has_Warning()
     {
         const string Source = @"
 using Spectre.Console;

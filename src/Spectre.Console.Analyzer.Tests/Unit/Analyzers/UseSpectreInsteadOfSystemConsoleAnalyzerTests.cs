@@ -7,7 +7,7 @@ public class UseSpectreInsteadOfSystemConsoleAnalyzerTests
         DiagnosticSeverity.Warning);
 
     [Fact]
-    public async void Non_configured_SystemConsole_methods_report_no_warnings()
+    public async Task Non_configured_SystemConsole_methods_report_no_warnings()
     {
         const string Source = @"
 using System;
@@ -24,7 +24,7 @@ class TestClass {
     }
 
     [Fact]
-    public async void Console_Write_Has_Warning()
+    public async Task Console_Write_Has_Warning()
     {
         const string Source = @"
 using System;
@@ -41,7 +41,7 @@ class TestClass {
     }
 
     [Fact]
-    public async void Console_WriteLine_Has_Warning()
+    public async Task Console_WriteLine_Has_Warning()
     {
         const string Source = @"
 using System;

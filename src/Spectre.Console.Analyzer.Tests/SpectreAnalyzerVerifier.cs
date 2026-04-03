@@ -1,3 +1,5 @@
+using Microsoft.CodeAnalysis.CSharp.Testing;
+
 namespace Spectre.Console.Analyzer.Tests;
 
 public static class SpectreAnalyzerVerifier<TAnalyzer>
@@ -39,7 +41,7 @@ public static class SpectreAnalyzerVerifier<TAnalyzer>
 
     // Code fix tests support both analyzer and code fix testing. This test class is derived from the code fix test
     // to avoid the need to maintain duplicate copies of the customization work.
-    private class Test : CSharpCodeFixTest<TAnalyzer, EmptyCodeFixProvider, XUnitVerifier>
+    private class Test : CSharpCodeFixTest<TAnalyzer, EmptyCodeFixProvider, DefaultVerifier>
     {
         public Test()
         {
